@@ -1,0 +1,42 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:spring-boot-course?useSSL=false&ServerTimezone=UTC
+    driver-class-name: org.h2.Driver
+    username: gabrielsantos
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        ddl-auto: update
+        format_sql: false
+        temp:
+          use_jdbc_metadata_defaults: false
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+    time-zone: America/Sao_Paulo
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+    queue:
+      name: SUCESSFULLY_REGISTERED_PURCHASE
+
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
+  servlet:
+    context-path: /purchase-api
+
+external-apis:
+  zipcodeapi:
+    url: https://www.zipcodeapi.com/rest/
+    application-key: ${ZIPCODE_APPLICATION_KEY}
