@@ -12,14 +12,14 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
+@EnableSwagger2
 public class SwaggerConfig {
 
-    /*
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.gabrielsantos.purchaseapi"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build().apiInfo(apiInfo());
     }
@@ -33,6 +33,6 @@ public class SwaggerConfig {
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
                 .contact(new Contact("Gabriel Santos", "https://github.com/gabrielrabelomachadosantos", "gabrielramasa@gmail.com"))
                 .build();
-    }*/
+    }
 
 }

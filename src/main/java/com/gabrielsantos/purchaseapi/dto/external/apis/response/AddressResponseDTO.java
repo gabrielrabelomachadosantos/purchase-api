@@ -1,4 +1,4 @@
-package com.gabrielsantos.purchaseapi.dto.response;
+package com.gabrielsantos.purchaseapi.dto.external.apis.response;
 
 import com.gabrielsantos.purchaseapi.model.Purchase;
 import lombok.AllArgsConstructor;

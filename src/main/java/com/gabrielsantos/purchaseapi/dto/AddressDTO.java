@@ -1,6 +1,6 @@
 package com.gabrielsantos.purchaseapi.dto;
 
-import com.gabrielsantos.purchaseapi.dto.response.AddressResponseDTO;
+import com.gabrielsantos.purchaseapi.dto.external.apis.response.AddressResponseDTO;
 import com.gabrielsantos.purchaseapi.model.Purchase;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

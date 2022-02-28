@@ -13,6 +13,9 @@ spring:
         format_sql: false
         temp:
           use_jdbc_metadata_defaults: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   jackson:
     deserialization:
       fail-on-unknown-properties: true
@@ -21,6 +24,8 @@ spring:
     console:
       enabled: true
       path: /h2
+      settings:
+        web-allow-others: true
   rabbitmq:
     host: rabbitmq
     port: 5672

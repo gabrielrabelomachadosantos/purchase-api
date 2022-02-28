@@ -3,7 +3,7 @@ package com.gabrielsantos.purchaseapi.service;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gabrielsantos.purchaseapi.dto.AddressDTO;
-import com.gabrielsantos.purchaseapi.dto.response.AddressResponseDTO;
+import com.gabrielsantos.purchaseapi.dto.external.apis.response.AddressResponseDTO;
 import com.gabrielsantos.purchaseapi.exception.BadRequestException;
 import com.gabrielsantos.purchaseapi.exception.InternalServerErrorException;
 import lombok.RequiredArgsConstructor;
