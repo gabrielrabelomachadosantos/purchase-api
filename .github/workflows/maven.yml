@@ -46,7 +46,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Build package jar
-      run: mvn -B package -Dskiptests --file pom.xml
+      run: mvn -B package -Dskipetests --file pom.xml
     - name: Upload .jar
       uses: actions/upload-artifact@v2
       with: 
