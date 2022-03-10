@@ -10,7 +10,7 @@ env:
   ZIPCODE_APPLICATION_KEY: pKQ16ODvAw3XN9O13vSHF8nsB5mEvMeaRWIw5pn7ehBO4ZBuzbAI1TP2wmtH7Fn3
 
 jobs:
-  build:
+  tests:
 
     runs-on: ubuntu-latest
 
