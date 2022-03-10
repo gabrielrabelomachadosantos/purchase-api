@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreditCardDTO {
 
-    private String number;
-
-    private String ownerName;
+    private Long number;
 
     private Long expiringDate;
 
-    private Integer securityCode;
+    private int cvv;
 
 }

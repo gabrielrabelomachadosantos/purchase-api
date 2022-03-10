@@ -1,6 +1,8 @@
 package com.gabrielsantos.purchaseapi.service;
 
+import com.gabrielsantos.purchaseapi.dto.CreditCardDTO;
 import com.gabrielsantos.purchaseapi.dto.PurchaseDTO;
+import com.gabrielsantos.purchaseapi.enums.PurchaseStatus;
 import com.gabrielsantos.purchaseapi.exception.BadRequestException;
 import com.gabrielsantos.purchaseapi.model.Address;
 import com.gabrielsantos.purchaseapi.model.Purchase;
@@ -29,44 +31,79 @@ public class PurchaseService {
     public ResponseEntity<PurchaseDTO> savePurchase(PurchaseDTO purchaseDTO) {
         validatePurchaseDTO(purchaseDTO);
 
-        Address address = new Address(addressService.getFullAddress(purchaseDTO.getBuyerZipCode()));
+        Address address = buildAddress(purchaseDTO.getBuyerZipCode());
 
         Purchase purchase = new Purchase(purchaseDTO);
         purchaseRepository.save(purchase);
         purchaseDTO.setId(purchase.getId());
+        purchaseDTO.setPurchaseStatus(PurchaseStatus.PENDING);
 
         address.setPurchase(purchase);
         addressRepository.save(address);
 
-        producer.sendToQueue(purchase);
+        producer.sendToRegisteredPurchaseQueue(purchaseDTO);
 
         return new ResponseEntity<>(purchaseDTO, HttpStatus.CREATED);
     }
 
+    public void updatePurchaseStatus(PurchaseDTO purchaseDTO) {
+        purchaseRepository.setPurchaseStatus(purchaseDTO.getId(), purchaseDTO.getPurchaseStatus());
+
+        if (PurchaseStatus.APPROVED.equals(purchaseDTO.getPurchaseStatus())) {
+            producer.sendToApprovedPurchaseQueue(purchaseDTO);
+        } else {
+            producer.sendToReprovedPurchaseQueue(purchaseDTO);
+        }
+    }
+
+    public Address buildAddress(String zipCode) {
+        return new Address(addressService.getFullAddress(zipCode));
+    }
+
     private void validatePurchaseDTO(PurchaseDTO purchaseDTO) {
         validateIfObjectIsNullAndThrowExceptionIfTrue(
-                purchaseDTO.getProduct(), "The productId must not be null.");
+                purchaseDTO.getProduct(), "The product must not be null.");
+
+        validateIfObjectIsNullAndThrowExceptionIfTrue(
+                purchaseDTO.getBuyerEmail(), "The email must not be null.");
 
         validateIfObjectIsNullAndThrowExceptionIfTrue(
                 purchaseDTO.getPrice(), "The price must not be null.");
 
         validateIfObjectIsNullAndThrowExceptionIfTrue(
-                purchaseDTO.getBuyerName(), "The buyerName must not be null.");
+                purchaseDTO.getBuyerName(), "The buyer name must not be null.");
 
         validateIfObjectIsNullAndThrowExceptionIfTrue(
-                purchaseDTO.getBuyerSSN(), "The buyerSsn must not be null.");
+                purchaseDTO.getBuyerSSN(), "The buyer ssn must not be null.");
 
         validateIfObjectIsNullAndThrowExceptionIfTrue(
-                purchaseDTO.getBuyerZipCode(), "The buyerZipCode must not be null.");
+                purchaseDTO.getBuyerZipCode(), "The buyer zip code must not be null.");
+
+        if (purchaseDTO.getPurchaseDate() == null || purchaseDTO.getPurchaseDate() == 0) {
+            purchaseDTO.setPurchaseDate(System.currentTimeMillis());
+        }
+
+        validateCreditCardDTO(purchaseDTO.getCreditCardDTO());
+    }
+
+    private void validateCreditCardDTO(CreditCardDTO creditCardDTO) {
+        validateIfObjectIsNullAndThrowExceptionIfTrue(
+                creditCardDTO.getCvv(), "The cvv number must not be null.");
+
+        validateIfObjectIsNullAndThrowExceptionIfTrue(
+                creditCardDTO.getNumber(), "The credit card number must not be null.");
+
+        validateIfObjectIsNullAndThrowExceptionIfTrue(
+                creditCardDTO.getExpiringDate(), "The credit card expiring date must not be null.");
     }
 
     private void validateIfObjectIsNullAndThrowExceptionIfTrue(Object object, String exceptionMessage) {
         if (object instanceof String && !StringUtils.hasText(String.valueOf(object))) {
             throw new BadRequestException(exceptionMessage);
-        } else {
-            if (object == null) {
-                throw new BadRequestException(exceptionMessage);
-            }
+        } else if (object instanceof Number && ((Number) object).intValue() == 0) {
+            throw new BadRequestException(exceptionMessage);
+        } else if (object == null) {
+            throw new BadRequestException(exceptionMessage);
         }
     }
 

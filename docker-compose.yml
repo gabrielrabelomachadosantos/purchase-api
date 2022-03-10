@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+
+  back-end:
+    container_name: back-end
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - rabbitmq
+    networks:
+      host:
+    environment:
+      ZIPCODE_APPLICATION_KEY: pKQ16ODvAw3XN9O13vSHF8nsB5mEvMeaRWIw5pn7ehBO4ZBuzbAI1TP2wmtH7Fn3
+
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      host:
+
+networks:
+  host:

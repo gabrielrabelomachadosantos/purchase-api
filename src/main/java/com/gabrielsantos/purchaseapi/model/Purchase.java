@@ -1,17 +1,14 @@
 package com.gabrielsantos.purchaseapi.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.gabrielsantos.purchaseapi.dto.PurchaseDTO;
 import com.gabrielsantos.purchaseapi.enums.Product;
+import com.gabrielsantos.purchaseapi.enums.PurchaseStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -53,6 +50,10 @@ public class Purchase implements Serializable {
     @Column(name = "purchase_date", nullable = false)
     private Date purchaseDate;
 
+    @Enumerated(value = EnumType.ORDINAL)
+    @Column(name = "purchase_status", nullable = false)
+    private PurchaseStatus purchaseStatus;
+
     public Purchase(PurchaseDTO purchaseDTO) {
         this.product = purchaseDTO.getProduct();
         this.price = purchaseDTO.getPrice();
@@ -61,6 +62,7 @@ public class Purchase implements Serializable {
         this.buyerEmail = purchaseDTO.getBuyerEmail();
         this.buyerZipCode = purchaseDTO.getBuyerZipCode();
         this.purchaseDate = new Date(purchaseDTO.getPurchaseDate());
+        this.purchaseStatus = PurchaseStatus.PENDING;
     }
 
 }

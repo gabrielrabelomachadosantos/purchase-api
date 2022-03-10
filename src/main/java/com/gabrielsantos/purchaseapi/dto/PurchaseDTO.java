@@ -1,7 +1,7 @@
 package com.gabrielsantos.purchaseapi.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gabrielsantos.purchaseapi.enums.Product;
+import com.gabrielsantos.purchaseapi.enums.PurchaseStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class PurchaseDTO {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     private Product product;
@@ -33,5 +32,7 @@ public class PurchaseDTO {
     private Long purchaseDate;
 
     private CreditCardDTO creditCardDTO;
+
+    private PurchaseStatus purchaseStatus;
 
 }

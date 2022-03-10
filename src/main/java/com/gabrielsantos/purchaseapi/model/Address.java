@@ -24,7 +24,7 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "purchase_fk")
     private Purchase purchase;
 

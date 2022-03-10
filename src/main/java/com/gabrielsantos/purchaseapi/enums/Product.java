@@ -13,6 +13,7 @@ public enum Product {
     NINTENDO_SWITCH(5, "Nintendo Switch");
 
     private final Integer id;
+
     private final String description;
 
     public Integer getId() {

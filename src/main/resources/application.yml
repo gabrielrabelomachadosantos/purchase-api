@@ -27,12 +27,25 @@ spring:
       settings:
         web-allow-others: true
   rabbitmq:
-    host: rabbitmq
+    host: localhost
     port: 5672
     username: guest
     password: guest
     queue:
-      name: SUCESSFULLY_REGISTERED_PURCHASE
+      registered-purchase: REGISTERED_PURCHASE
+      pending-purchase: PENDING_PURCHASE_APPROVE
+      approved-purchase: APPROVED_PURCHASE
+      reproved-purchase: REPROVED_PURCHASE
+      update-purchase-status: UPDATE_PURCHASE_STATUS
+    listener:
+      simple:
+        retry:
+          max-attempts: 5
+      direct:
+        auto-startup: true
+    template:
+      retry:
+        max-attempts: 5
 
 server:
   port: 8080
@@ -45,3 +58,12 @@ external-apis:
   zipcodeapi:
     url: https://www.zipcodeapi.com/rest/
     application-key: ${ZIPCODE_APPLICATION_KEY}
+
+#security:
+  #jwtConfig:
+    #expirationTime: 600000
+    #secret: KQL-QM%FUGf=uobF@K8vK#P4n
+    #tokenPrefix: Bearer
+    #headerString: Authorization
+  #standardUser:
+    #username: bOYS@Nw8Noax-iZo5xETrb
