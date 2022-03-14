@@ -7,7 +7,7 @@ on:
     branches: [ main ]
     
 env:
-  JASYPT_ENCRYPTION_KEY: fX=Gq9MS#Ue%YXf@76HY-wVPz
+  JASYPT_ENCRYPTION_KEY: ${{ secrets.JASYPT_ENCRYPTION_KEY }}
 
 jobs:
   tests:

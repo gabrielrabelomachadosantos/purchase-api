@@ -11,8 +11,6 @@ services:
       - rabbitmq
     networks:
       host:
-    environment:
-      JASYPT_ENCRYPTION_KEY: fX=Gq9MS#Ue%YXf@76HY-wVPz
 
   rabbitmq:
     image: rabbitmq:3.9-management
