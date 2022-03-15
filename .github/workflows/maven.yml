@@ -55,7 +55,7 @@ jobs:
   deploy:
     needs: build
     name: Deploy on AWS Elastic Beanstalk
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Download .jar
         uses: actions/download-artifact@v2
