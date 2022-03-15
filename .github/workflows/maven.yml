@@ -52,24 +52,24 @@ jobs:
           name: purchase-api
           path: target/app.jar
 
-    deploy:
-      needs: build
-      name: Deploy on AWS Elastic Beanstalk
-      run-on: ubuntu-latest
-      steps:
-        - name: Download .jar
-          uses: actions/download-artifact@v2
+  deploy:
+    needs: build
+    name: Deploy on AWS Elastic Beanstalk
+    run-on: ubuntu-latest
+    steps:
+      - name: Download .jar
+        uses: actions/download-artifact@v2
+        with:
+          name: purchase-api
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v20
           with:
-            name: purchase-api
-        - name: Deploy to EB
-          uses: einaregilsson/beanstalk-deploy@v20
-            with:
-              aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-              aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-              application_name: purchase-api-gabrielsantos
-              environment_name: Purchaseapigabrielsantos-env
-              version_label: 1
-              region: us-east-1
-              deployment_package: app.jar
-              wait_for_enviroment_recovery: 120
-              use_existing_version_is_available: true
+            aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            application_name: purchase-api-gabrielsantos
+            environment_name: Purchaseapigabrielsantos-env
+            version_label: 1
+            region: us-east-1
+            deployment_package: app.jar
+            wait_for_enviroment_recovery: 120
+            use_existing_version_is_available: true
