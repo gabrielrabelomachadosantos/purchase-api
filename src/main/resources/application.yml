@@ -58,11 +58,6 @@ external-apis:
     url: https://www.zipcodeapi.com/rest/
     application-key: ENC(A6QFKAwqb5WzVO37e1yBjHzB1EU/7Yz8gih8hYkS8Dkqgas+qTSyHM8WCXzKHllMzl1ab/Sr3zl+HXZIknKo0Ips0P+AjhpyZENbiRmP8IFhf4csAvWLLaf8pWhznpDgO6uPft0zVzm8URk0W2jrcw==)
 
-#security:
-  #jwtConfig:
-    #expirationTime: 600000
-    #secret: KQL-QM%FUGf=uobF@K8vK#P4n
-    #tokenPrefix: Bearer
-    #headerString: Authorization
-  #standardUser:
-    #username: bOYS@Nw8Noax-iZo5xETrb
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTION_KEY}
