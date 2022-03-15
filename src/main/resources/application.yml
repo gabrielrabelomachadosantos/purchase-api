@@ -27,10 +27,9 @@ spring:
       settings:
         web-allow-others: true
   rabbitmq:
-    host: rabbitmq
-    port: 5672
-    username: guest
-    password: guest
+    addresses: amqps://b-516f056b-672b-4725-aa79-db9f1ab5e10a.mq.us-east-1.amazonaws.com:5671
+    username: ENC(z8hSoHcdzcB8jiUIrDJ3SHiscxcZfSHRZsu8cRrI05LhBvDHKhCifrmSrVPWqWxz)
+    password: ENC(DHiN8ekeQpcyW7QtYsw8lYR/84lpOA3+9/zfhTiu2GTwDUGHulYhNmrX6gNsPX09t9vzCrDQ+aOt669OkZUmwQ==)
     queue:
       registered-purchase: REGISTERED_PURCHASE
       pending-purchase: PENDING_PURCHASE_APPROVE
