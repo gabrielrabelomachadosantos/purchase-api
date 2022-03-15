@@ -135,6 +135,7 @@
                <version>2.22.1</version>
                <configuration>
                    <useSystemClassLoader>false</useSystemClassLoader>
+                   <useFile>false</useFile>
                </configuration>
            </plugin>
         </plugins>
