@@ -41,7 +41,7 @@ public class PurchaseService {
         address.setPurchase(purchase);
         addressRepository.save(address);
 
-        //producer.sendToRegisteredPurchaseQueue(purchaseDTO);
+        producer.sendToRegisteredPurchaseQueue(purchaseDTO);
 
         return new ResponseEntity<>(purchaseDTO, HttpStatus.CREATED);
     }
