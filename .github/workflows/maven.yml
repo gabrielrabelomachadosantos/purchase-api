@@ -68,8 +68,8 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: purchase-api-gabrielsantos
-          environment_name: Purchaseapigabrielsantos-env
-          version_label: 1
+          environment_name: purchase-api-gabrielsantos
+          version_label: latest-${{github.sha}}
           region: us-east-1
           deployment_package: app.jar
           wait_for_environment_recovery: 120
