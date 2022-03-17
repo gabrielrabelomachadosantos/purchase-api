@@ -13,7 +13,7 @@ public class CreditCardDTO {
 
     private Long number;
 
-    private Long expiringDate;
+    private Long expiringDateInMillis;
 
     private int cvv;
 

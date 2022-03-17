@@ -4,7 +4,7 @@ spring:
     url: jdbc:h2:mem:spring-boot-course?useSSL=false&ServerTimezone=UTC
     driver-class-name: org.h2.Driver
     username: gabrielsantos
-    password:
+    password: ENC(lCP5lcgnAceO6R84fgimgl5OfxPw10K+7M67ETPeuf6FyVoIOVzplZ1BVQN9LKoypzjf8p6ixf+n45WzH7XuKQ==)
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     properties:
