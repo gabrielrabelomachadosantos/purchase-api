@@ -120,7 +120,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>app</finalName>
+        <finalName>purchase-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

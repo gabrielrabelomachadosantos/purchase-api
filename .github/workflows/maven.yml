@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: purchase-api
-          path: target/app.jar
+          path: target/purchase-api.jar
 
   deploy:
     needs: build
@@ -69,8 +69,8 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: gabrielsantos-apps
           environment_name: GabrielSantos-Apps
-          version_label: latest-${{github.sha}}
+          version_label: purchase-api-${{github.sha}}
           region: us-east-1
-          deployment_package: app.jar
+          deployment_package: purchase-api.jar
           wait_for_environment_recovery: 120
           use_existing_version_if_available: true
