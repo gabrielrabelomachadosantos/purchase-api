@@ -88,9 +88,6 @@ public class PurchaseService {
 
     private void validateCreditCardDTO(CreditCardDTO creditCardDTO) {
         validateIfObjectIsNullAndThrowExceptionIfTrue(
-                creditCardDTO.getCvv(), "The cvv number must not be null.");
-
-        validateIfObjectIsNullAndThrowExceptionIfTrue(
                 creditCardDTO.getNumber(), "The credit card number must not be null.");
 
         validateIfObjectIsNullAndThrowExceptionIfTrue(

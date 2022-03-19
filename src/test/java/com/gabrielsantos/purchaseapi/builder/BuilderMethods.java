@@ -53,7 +53,6 @@ public class BuilderMethods {
 
     public CreditCardDTO buildCreditCardDTO() {
         return CreditCardDTO.builder()
-                .cvv(123)
                 .expiringDateInMillis(System.currentTimeMillis())
                 .number(5545044229900872L)
                 .build();
