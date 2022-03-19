@@ -91,7 +91,7 @@ public class PurchaseService {
                 creditCardDTO.getNumber(), "The credit card number must not be null.");
 
         validateIfObjectIsNullAndThrowExceptionIfTrue(
-                creditCardDTO.getExpiringDateInMillis(), "The credit card expiring date must not be null.");
+                creditCardDTO.getExpiringDate(), "The credit card expiring date must not be null.");
     }
 
     private void validateIfObjectIsNullAndThrowExceptionIfTrue(Object object, String exceptionMessage) {

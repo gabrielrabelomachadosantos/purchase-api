@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.time.Duration;
+import java.util.Date;
 
 public class BuilderMethods {
 
@@ -53,7 +54,7 @@ public class BuilderMethods {
 
     public CreditCardDTO buildCreditCardDTO() {
         return CreditCardDTO.builder()
-                .expiringDateInMillis(System.currentTimeMillis())
+                .expiringDate(new Date())
                 .number(5545044229900872L)
                 .build();
     }
