@@ -68,7 +68,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: gabrielsantos-apps
-          environment_name: GabrielSantos-Apps
+          environment_name: Purchase-API-Env
           version_label: purchase-api-${{github.sha}}
           region: us-east-1
           deployment_package: purchase-api.jar
