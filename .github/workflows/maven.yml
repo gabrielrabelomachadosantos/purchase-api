@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: maven
       - name: Build with Maven
         run: mvn -B package --file pom.xml
@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: maven
       - name: Cache local Maven repository
         uses: actions/cache@v2
@@ -67,8 +67,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: purchase-api-gabrielsantos
-          environment_name: purchase-api-gabrielsantos
+          application_name: purchase-api
+          environment_name: GabrielSantosApps-Env
           version_label: latest-${{github.sha}}
           region: us-east-1
           deployment_package: app.jar
