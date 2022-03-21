@@ -3,6 +3,7 @@ package com.gabrielsantos.purchaseapi.controller;
 import com.gabrielsantos.purchaseapi.dto.PurchaseDTO;
 import com.gabrielsantos.purchaseapi.service.PurchaseService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class PurchaseController {
 
     @ResponseBody
     @PostMapping(path = "/savePurchase")
+    @ApiOperation(value = "Save purchase")
     public ResponseEntity<PurchaseDTO> savePurchase(@RequestBody PurchaseDTO purchaseDTO) {
         return purchaseService.savePurchase(purchaseDTO);
     }

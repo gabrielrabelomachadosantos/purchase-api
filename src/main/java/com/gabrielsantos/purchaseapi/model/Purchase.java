@@ -57,10 +57,10 @@ public class Purchase implements Serializable {
     public Purchase(PurchaseDTO purchaseDTO) {
         this.product = purchaseDTO.getProduct();
         this.price = purchaseDTO.getPrice();
-        this.buyerName = purchaseDTO.getBuyerName();
-        this.buyerSSN = purchaseDTO.getBuyerSSN();
-        this.buyerEmail = purchaseDTO.getBuyerEmail();
-        this.buyerZipCode = purchaseDTO.getBuyerZipCode();
+        this.buyerName = "Placeholder Name";
+        this.buyerSSN = "Placeholder SSN";
+        this.buyerEmail = "Placeholder Email";
+        this.buyerZipCode = "Placeholder ZipCode";
         this.purchaseDate = new Date(purchaseDTO.getPurchaseDate());
         this.purchaseStatus = PurchaseStatus.PENDING;
     }

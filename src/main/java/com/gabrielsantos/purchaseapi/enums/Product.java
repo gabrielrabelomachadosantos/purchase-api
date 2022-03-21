@@ -20,7 +20,7 @@ public enum Product {
         return this.id;
     }
 
-    public String getDesciption() {
+    public String getDescription() {
         return this.description;
     }
 
