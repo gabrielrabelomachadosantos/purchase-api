@@ -37,7 +37,7 @@ public class PurchaseDTO {
 
     private CreditCardDTO creditCardDTO;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonIgnore
     private PurchaseStatus purchaseStatus;
 
 }
