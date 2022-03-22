@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gabrielsantos.purchaseapi.enums.Product;
 import com.gabrielsantos.purchaseapi.enums.PurchaseStatus;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class PurchaseDTO {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @ApiModelProperty(hidden = true)
     private Long id;
 
     private Product product;
@@ -37,7 +38,7 @@ public class PurchaseDTO {
 
     private CreditCardDTO creditCardDTO;
 
-    @JsonIgnore
+    @ApiModelProperty(hidden = true)
     private PurchaseStatus purchaseStatus;
 
 }

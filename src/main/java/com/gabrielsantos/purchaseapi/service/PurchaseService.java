@@ -83,6 +83,8 @@ public class PurchaseService {
             purchaseDTO.setPurchaseDate(System.currentTimeMillis());
         }
 
+        purchaseDTO.setPurchaseStatus(PurchaseStatus.PENDING);
+
         validateCreditCardDTO(purchaseDTO.getCreditCardDTO());
     }
 
