@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
-@ActiveProfiles("")
+@ActiveProfiles("prod")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = PurchaseApiApplication.class)
 public class PurchaseControllerService {

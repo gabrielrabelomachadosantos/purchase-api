@@ -23,14 +23,19 @@ public class PurchaseDTO {
 
     private Product product;
 
+    @ApiModelProperty(example = "4500.00")
     private BigDecimal price;
 
+    @ApiModelProperty(example = "Giovanni Giorgio")
     private String buyerName;
 
+    @ApiModelProperty(example = "123456789")
     private String buyerSSN;
 
+    @ApiModelProperty(example = "randomemail@email.com")
     private String buyerEmail;
 
+    @ApiModelProperty(example = "90209")
     private String buyerZipCode;
 
     @JsonIgnore

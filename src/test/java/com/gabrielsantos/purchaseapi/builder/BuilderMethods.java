@@ -55,15 +55,7 @@ public class BuilderMethods {
     public CreditCardDTO buildCreditCardDTO() {
         return CreditCardDTO.builder()
                 .expiringDate(new Date())
-                .number(5545044229900872L)
-                .build();
-    }
-
-    public HttpRequest.Builder buildZipCodeHttpRequest() {
-        return (HttpRequest.Builder) HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create("https://www.zipcodeapi.com/rest/DemoOnly00aog1kYaaFchsCZnpvS8N9AwPnA8Axpgti7Pebeh4TFUqB2Eqf9DFaQ/info.json/90209/degrees"))
-                .timeout(Duration.ofSeconds(5))
+                .number("5545 0442 2990 0872")
                 .build();
     }
 
