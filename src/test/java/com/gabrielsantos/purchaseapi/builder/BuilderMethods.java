@@ -9,9 +9,6 @@ import com.gabrielsantos.purchaseapi.model.Address;
 import com.gabrielsantos.purchaseapi.model.Purchase;
 
 import java.math.BigDecimal;
-import java.net.URI;
-import java.net.http.HttpRequest;
-import java.time.Duration;
 import java.util.Date;
 
 public class BuilderMethods {
