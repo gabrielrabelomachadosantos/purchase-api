@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download .jar
-       uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           name: purchase-api
       - name: Deploy to EB
