@@ -19,7 +19,6 @@ import java.math.BigDecimal;
 public class PurchaseDTO {
 
     @ApiModelProperty(hidden = true)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     private Product product;
@@ -45,7 +44,6 @@ public class PurchaseDTO {
     private CreditCardDTO creditCardDTO;
 
     @ApiModelProperty(hidden = true)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private PurchaseStatus purchaseStatus;
 
 }
